@@ -85,7 +85,14 @@ const data = [
         thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-    }
+    },
+    {
+        title: "Sierra Madre Gala Event",
+        date: "October 23rd, 2077",
+        firstParagraph: "The gala event is set to begin today. There will be celebrities from all around the country, Vera Keyes, Dean Domino and more.",
+        secondParagraph: "The gala event began tonight, everything is going well. The guests are happy, fed, and having a good time.",
+        thirdParagraph: "The gala event is being cut short due to the war we feared. Oh god the doors, are sealing. We'll all be stuck here forever. If anyone finds this I'm so sorry youre here",
+    },
 ];
 
 function article(props) {
@@ -102,8 +109,8 @@ function article(props) {
 
     //set classes
     div.classList.add("article");
-    div.classList.add("article-open");
     date.classList.add("date");
+    expandBtn.classList.add("expandButton");
 
     //set text content
     title.textContent = props.title;
@@ -123,6 +130,7 @@ function article(props) {
 
     //event listeners
     expandBtn.addEventListener("click", () => {
+        expandBtn.textContent = expandBtn.textContent === "Expand" ? "Collapse" : "Expand";
         if (div.classList.contains("article-open")) div.classList.remove("article-open");
         else div.classList.add("article-open");
     });
@@ -131,8 +139,9 @@ function article(props) {
 
 
 const articles = document.querySelector(".articles");
-const testArt = article(data[0]);
-articles.appendChild(testArt);
+data.forEach((dataEntry) => {
+    articles.appendChild(article(dataEntry));
+});
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below:
   
@@ -154,8 +163,8 @@ articles.appendChild(testArt);
   XStep 3: return the entire component.
 
   //todo: ask why map and not foreach
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  (Done, if this means foreach)Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+  XStep 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
