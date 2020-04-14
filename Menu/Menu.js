@@ -9,6 +9,37 @@ let menuItems = [
   'Log Out'
 ];
 
+
+function menu(menuItems){
+    //declare and initialize elements
+    const div = document.createElement("div");
+    const unorderedList = document.createElement("ul");
+
+    //set classes
+    div.classList.add("menu");
+
+    //hierarchy
+    div.appendChild(unorderedList);
+    menuItems.forEach((item) => {
+        const newItem = document.createElement("li");
+        newItem.textContent = item;
+        unorderedList.appendChild(newItem);
+    });
+
+    //event listeners
+    const menuButton = document.querySelector(".menu-button");
+    menuButton.addEventListener("click", () => {
+        div.classList.toggle("menu--open");
+    });
+
+    return div;
+}
+
+const header = document.querySelector(".header");
+console.log(header);
+console.log("working");
+header.appendChild(menu(menuItems));
+
 /* 
 
   Step 1: Write a function that will create a menu component as seen below:
@@ -19,17 +50,17 @@ let menuItems = [
     </ul>
   </div>
 
-  The function takes an array as its only argument.
+  XThe function takes an array as its only argument.
 
-  Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
+  XStep 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array.
   Add those items to the <ul>
 
-  Step 3: Using a DOM selector, select the menu button (the element with a class of 'menu-button') currently on the DOM.
+  XStep 3: Using a DOM selector, select the menu button (the element with a class of 'menu-button') currently on the DOM.
 
-  Step 4: add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).
+  XStep 4: add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).
 
-  Step 5: return the menu component.
+  XStep 5: return the menu component.
 
-  Step 6: add the menu component to the DOM.
+  XStep 6: add the menu component to the DOM.
   
 */
